@@ -1,0 +1,63 @@
+{% extends 'base.html'%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    {% if title %}
+    <title> {{ title }}</title>
+    {% else %}
+    <title> NEWS HIGHLIGHT </title>
+    {% endif %}
+</head>
+<body>
+   
+
+{% block content%}
+<div class="container-fluid">
+
+        <h2> Top News</h2>
+        {% for article in articles | batch(4)%}
+
+	        <div class="row">
+	       
+		        {% for article in article %}
+
+		        	<div class="col-md-4">
+				        <div>
+				        <a href="{{article.url}}" target="_blank">
+						      <img src="{{article.image}}" alt="{{article.title}}" class="img-responsive" styles="height:30px">
+						      </a>
+						      <div>
+						        <h4><a href="{{article.url}}" target="_blank">{{article.title |truncate(35)}}</a></h4>
+						        <p>{{article.description | truncate(1000)}}</p>
+						        <a href="{{article.url}}" target="_blank"> Read More</a>
+
+						        
+						      </div>
+						      <div>
+						      Published at: {{article.date}}
+						      
+								
+							</div>
+	  					</div>
+
+
+			     	</div>
+			     	
+		        {% endfor %}
+	        
+	        </div>
+         
+        {% endfor %}
+        
+	
+</div>
+
+
+{%endblock%}
+
+
+</body>
+</html>

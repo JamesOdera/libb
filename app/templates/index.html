@@ -1,0 +1,27 @@
+{% extends 'base.html'%}
+{% import 'macros.html' as macro%}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    {% if title %}
+        <title> {{ title }}</title>
+        {% else %}
+        <title> WELCOME TO NEWS APP </title>
+        {% endif %}
+</head>
+<body>
+    <h1> {{message}} </h1>
+    {% block content%}
+    <div class="container">
+        
+            <h1>NEWS</h1>
+            <hr>
+            {{ macro.displaySourceList(sources)}}
+    </div>
+    {%endblock%}
+</body>
+</html>
